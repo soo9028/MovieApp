@@ -27,7 +27,7 @@ export default class Login extends Component{
 
                     {/* 1.5 회원가입 */}
                     <Text>
-                        계정이 없으신가요? <Text>가입하기</Text>
+                        계정이 없으신가요? <Text onPress={()=>this.props.navigation.navigate('SignUp')} style={style.signuplink}>가입하기</Text>
                     </Text>
 
 
