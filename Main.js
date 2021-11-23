@@ -27,6 +27,7 @@ export default class Main extends Component{
                     <RootStack.Navigator screenOptions={{headerShown:false}}>
                     <RootStack.Screen name="Intro" component={Intro}></RootStack.Screen>       
                     <RootStack.Screen name="LoginNav" component={LoginNav}></RootStack.Screen>
+                    <RootStack.Screen name="MainDrawerNav" component={MainDrawerNav}></RootStack.Screen>
                     </RootStack.Navigator>
             </NavigationContainer>
         );
