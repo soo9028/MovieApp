@@ -11,6 +11,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Intro from './Intro';
 import LoginNav from './navigators/LoginNav';
+import MainDrawerNav from './navigators/MainDrawerNav';
 
 //최상위 Navigator에 의해 전환될 스크린(컴포넌트) or Navigator
 //기존 로그인 여부를 체크하는 화면 컴포넌트
@@ -27,7 +28,7 @@ export default class Main extends Component{
                     <RootStack.Navigator screenOptions={{headerShown:false}}>
                     <RootStack.Screen name="Intro" component={Intro}></RootStack.Screen>       
                     <RootStack.Screen name="LoginNav" component={LoginNav}></RootStack.Screen>
-                    <RootStack.Screen name="MainDrawerNav" component={MainDrawerNav}></RootStack.Screen>
+                    <RootStack.Screen  name="MainDrawerNav" component={MainDrawerNav}></RootStack.Screen>
                     </RootStack.Navigator>
             </NavigationContainer>
         );

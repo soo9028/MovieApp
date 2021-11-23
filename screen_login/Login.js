@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {View, Text, StyleSheet, Button, Alert} from 'react-native';
 import InputComponent from '../components/InputComponent';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default class Login extends Component{
     render(){
@@ -22,7 +23,7 @@ export default class Login extends Component{
 
                     {/* 1.4 로그인 버튼 */}
                     <View style={{width:'100%', marginBottom:24}}>
-                    <Button title="로그인" color="#3796EF"></Button>
+                    <Button onPress={this.login} title="로그인" color="#3796EF"></Button>
                     </View>
 
                     {/* 1.5 회원가입 */}
@@ -40,8 +41,18 @@ export default class Login extends Component{
                               
             </View>
         );
+    }//render
+
+     //로그인 버튼 클릭시..
+     login= ()=>{
+        //원래는 서버에 전송하는 코드를 사용해야 하지만 시간상..이는 생략..
+        //AsyncStorage에 가상의 이메일값을 저장해서 로그인 유무만 저장하기..
+        AsyncStorage.setItem('email','android@mrhi.com').then( ()=>{
+            //로그인 되었으니.. 앱의 메인화면이 MovieList화면으로 이동
+            this.props.navigation.navigate('MainDrawerNav')
+        } )
     }
-}
+}//main
 
 const style= StyleSheet.create({
     root:{flex:1, backgroundColor:'#FEFFFF'},
