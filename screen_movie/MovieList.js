@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, Alert} from 'react-native';
-import {AsyncStorage} from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import BigCatalogList from '../components_movie/BigCatalogList';
 import SubCatalogList from '../components_movie/SubCatalogList';
 
@@ -44,26 +44,25 @@ export default class MovieList extends Component{
     componentDidMount(){
         this.props.navigation.setOptions({
             headerTitleAlign:'center',
-            headerRight:()=>{
+            headerRight: ()=>{
                 return (
-                    <TouchableOpacity style={{marginRight:16}} onPress={()=>{this.props.navigation.openDrawer()}}>
+                    <TouchableOpacity style={{marginRight:16}} onPress={()=>this.props.navigation.toggleDrawer()}>
                         <Image source={require('../images/ic_menu.png')}></Image>
                     </TouchableOpacity>
                 )
             },
-
-            headerLeft:()=>(
-                <TouchableOpacity style={{flexDirection:'row', marginLeft:16, }} onPress={async()=>{
-                    //원래는 서버 작업이 필요하지만, 주어진 시간 상 만들 수 없으니, AsyncStorage에 저장된 내용을 지울 것임.
-                    Alert.alert()
-                    await AsyncStorage.removeItem('email')
-                    this.props.navigation.replace('Intro')
-                }}>
+            headerLeft: ()=> (
+                <TouchableOpacity 
+                    style={{flexDirection:'row', marginLeft:16, alignItems:'center'}}
+                    onPress={ async ()=>{
+                        //원래는 서버작업이 필요하지만 시간강.. AsyncStorage의 저장내역 삭제
+                        await AsyncStorage.removeItem('email')
+                        this.props.navigation.replace('Intro')
+                    } }>
                     <Image source={require('../images/Tabs/ic_profile.png')}></Image>
                     <Text style={{marginLeft:4}}>로그아웃</Text>
                 </TouchableOpacity>
             )
-        
         });
     }
 
